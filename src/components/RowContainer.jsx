@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { MdShoppingBasket } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
@@ -38,8 +37,8 @@ const RowContainer = ({ flag, data }) => {
                     <motion.div 
                     whileTap={{scale: 0.8}} 
                     onClick={() => setItems([...cartItems, item])}
-                    className='w-8 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md'>
-                        <MdShoppingBasket className='text-white'/>
+                    className='w-20 h-8 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md'>
+                        <h1 className='text-semibold text-white text-sm'>Adicionar</h1>
                     </motion.div>
                 </div>
 

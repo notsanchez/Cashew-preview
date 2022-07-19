@@ -21,12 +21,12 @@ const HomeContainer = () => {
             </p>
     
             <p className='text-base md:text-[6] text-textColor text-center md:text-left md:w-[80%]'>
-             {user && ('Seja bem-vindo(a) ' + user.displayName)}
+             {user && ('Seja bem-vindo(a) ' + user)}
             </p>
     
               <button type='button' 
               className='bg-gradient-to-br from-orange-400 to-orange-500 w-full md:w-auto px-4 py-2 rounded-lg 
-              hover:shadow-lg transition-all duration-100 ease-in-out'>
+              hover:shadow-lg transition-all duration-100 ease-in-out text-white font-bold text-2xl drop-shadow-md'>
               Fazer pedido
               </button>
           </div>

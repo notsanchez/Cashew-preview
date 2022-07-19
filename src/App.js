@@ -1,22 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CreateContainer, Header, MainContainer } from './components'
 import { AnimatePresence } from 'framer-motion'
 import { Route, Routes } from 'react-router-dom'
 import { useStateValue } from './context/StateProvider'
-import { getAllFoodItems } from './utils/firebaseFunctions'
 import { actionType } from './context/reducer'
-import { Profile } from './pages'
-import { InitialPage } from './pages'
+import { InitialPage, Profile, RequestPage, ConfirmPage, RegisterPage, LoginPage } from './pages'
+import axios from 'axios'
 
 const App = () => {
 
-  const [{foodItems, user, adminemail}, dispatch] = useStateValue();
+  const [{user, adminemail}, dispatch] = useStateValue();
 
   const fetchData = async () => {
-    await getAllFoodItems().then(data => {
+    axios.get('http://localhost:3001/data')
+    .then(function(data){
+      console.log(data)
       dispatch({
         type : actionType.SET_FOOD_ITEMS,
-        foodItems : data
+        foodItems : data.data
       })
     })
   }
@@ -33,12 +34,22 @@ const App = () => {
             <main className='mt-14 md:mt-20 px-4 md:px-16 py-4 w-full'>
                 <Routes>
                     {user && user ? (
-                      <Route path="/" element={<MainContainer />}/>
+                      <>
+                        <Route path="/" element={<MainContainer />}/>
+                        <Route path="/confirm" element={<ConfirmPage />}/>
+                      </>
                     ) : (
-                      <Route path="/" element={<InitialPage />}/>
+                      <>
+                        <Route path="/" element={<InitialPage />}/>
+                        <Route path="/register" element={<RegisterPage />}/>
+                        <Route path="/login" element={<LoginPage />}/>
+                      </>
                     )}
-                    {user && user.email === adminemail && (
-                      <Route path="/createItem" element={<CreateContainer />}/>
+                    {user && user === adminemail && (
+                      <>
+                        <Route path="/createItem" element={<CreateContainer />}/>
+                        <Route path="/pedidos" element={<RequestPage/>}/>
+                      </>
                     )}
                     <Route path="/profile" element={<Profile />}/>
                 </Routes>

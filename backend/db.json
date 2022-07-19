@@ -1,0 +1,113 @@
+{
+  "data": [
+    {
+      "category": "bebidas",
+      "id": "1",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818420697-d2.png?alt=media&token=a9dc8372-3270-4d40-8a0f-922009e2da72",
+      "price": 5,
+      "qty": 1,
+      "title": "Pepsi"
+    },
+    {
+      "category": "bebidas",
+      "id": "2",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818653421-d6.png?alt=media&token=addecce2-6cd9-4730-95fa-1a4aaadf5d00",
+      "price": 5,
+      "qty": 1,
+      "title": "Fanta Laranja"
+    },
+    {
+      "category": "salgados",
+      "id": "3",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818137969-coxinha.png?alt=media&token=9a42037f-a37a-4d92-9ef9-2190d1193661",
+      "price": 5,
+      "qty": 1,
+      "title": "Coxinha"
+    },
+    {
+      "category": "salgados",
+      "id": "4",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818201418-pastel.png?alt=media&token=048de09f-e764-429f-aa7b-b39913e0e70c",
+      "price": 5,
+      "qty": 1,
+      "title": "Pastel"
+    },
+    {
+      "category": "lanches",
+      "id": "5",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818328663-lanche-frango.png?alt=media&token=2d49ef1e-19b8-4972-b799-4265e2fb7dac",
+      "price": 5,
+      "qty": 1,
+      "title": "Lanche natural - Frango"
+    },
+    {
+      "category": "lanches",
+      "id": "6",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818347399-mockup_classicos_atum.png?alt=media&token=5ff7e726-3d11-40ef-aced-e6bbc4e0335b",
+      "price": 5,
+      "qty": 1,
+      "title": "Lanche natural - Atum"
+    },
+    {
+      "category": "pratos",
+      "id": "7",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818357383-Lanche-natural-supreme.png?alt=media&token=4d9d309b-419a-4c52-a732-c20813fb91e3",
+      "price": 5,
+      "qty": 1,
+      "title": "lanche natural - supreme"
+    },
+    {
+      "category": "pratos",
+      "id": "8",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/cashew-becfd.appspot.com/o/Images%2F1657818383106-c7.png?alt=media&token=a6c1b7b0-b3c3-4d0a-aed4-04730d4eeea9",
+      "price": 5,
+      "qty": 1,
+      "title": "Prato do dia"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Salgados",
+      "urlParamName": "salgados"
+    },
+    {
+      "id": 2,
+      "name": "Lanches",
+      "urlParamName": "lanches"
+    },
+    {
+      "id": 3,
+      "name": "Pratos",
+      "urlParamName": "pratos"
+    },
+    {
+      "id": 4,
+      "name": "Bebidas",
+      "urlParamName": "bebidas"
+    }
+  ],
+  "pedidos": [],
+  "usuarios": [
+    {
+      "id": "admin@uscsonline.com.br",
+      "password": "admin123",
+      "fullName": "admin"
+    },
+    {
+      "id": "matheus.machado@uscsonline.com.br",
+      "password": "123",
+      "fullName": "Matheus Machado"
+    },
+    {
+      "id": "matheus.costa2@uscsonline.com.br",
+      "password": "1234",
+      "fullName": "Matheus Costa"
+    },
+    {
+      "id": "teste@uscsonline.com.br",
+      "password": "123",
+      "fullName": "teste"
+    }
+  ]
+}

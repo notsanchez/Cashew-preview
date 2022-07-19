@@ -22,7 +22,7 @@ const MainContainer = () => {
           <p className='text-2xl font-semibold capitalize text-headingColor relative before:absolute 
           before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 
           before:bg-orange-500 transition-all ease-in-out duration-100'
-          >Produtos
+          >bebidas
           </p>
 
           <div className='hidden md:flex gap-3 items-center'>
@@ -43,7 +43,7 @@ const MainContainer = () => {
 
         <RowContainer
           flag={true} 
-          data={foodItems?.filter(item => item.category === 'salgados')}
+          data={foodItems?.filter(item => item.category == 'bebidas')}
         />
       </section>
       

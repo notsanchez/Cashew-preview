@@ -6,7 +6,7 @@ import { categories } from '../utils/data';
 import Loader from './Loader';
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '../firebase.config';
-import { getAllFoodItems, saveItem } from '../utils/firebaseFunctions';
+import { saveItem } from '../utils/firebaseFunctions';
 import { actionType } from '../context/reducer';
 import { useStateValue } from '../context/StateProvider';
 
@@ -110,7 +110,6 @@ const CreateContainer = () => {
       }, 4000);
     }
 
-    fetchData()
   }
 
   const clearData = () => {
@@ -120,14 +119,6 @@ const CreateContainer = () => {
     setCategory("select Category")
   }
 
-  const fetchData = async () => {
-    await getAllFoodItems().then(data => {
-      dispatch({
-        type : actionType.SET_FOOD_ITEMS,
-        foodItems : data
-      })
-    })
-  }
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center">

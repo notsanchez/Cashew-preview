@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { RiRefreshFill } from "react-icons/ri";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-
+import axios from 'axios'
+import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "../img/emptyCart.svg";
 import CartItem from "./CartItem";
+import ConfirmPage from "../pages/ConfirmPage";
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
+  const [valueTest, setValueTest] = useState('')
 
   const showCart = () => {
     dispatch({
@@ -23,6 +26,7 @@ const CartContainer = () => {
   };
 
   useEffect(() => {
+    setValueTest(cartItems)
     let totalPrice = cartItems.reduce(function (accumulator, item) {
       return accumulator + item.qty * item.price;
     }, 0);
@@ -40,9 +44,22 @@ const CartContainer = () => {
 
   const totalCart = tot + 1.5
 
-  console.log(totalCart)
-
   const currency = "BRL";
+
+  function FazerPedido(){
+      const rndInt = Math.floor(Math.random() * 2000) + 100
+      axios.post('http://localhost:3001/pedidos', {
+      pedido: valueTest,
+      preco: totalCart,
+      id: rndInt
+    }).then(function(res){
+      console.log(res)
+    }).catch(function(err){
+      console.log(err)
+    })
+    localStorage.setItem("request", rndInt);
+  }
+
 
   const PaypalPayment = () => {
     return(
@@ -138,14 +155,17 @@ const CartContainer = () => {
 
             {user ? (
               <>
-                {/*<motion.button
-                  whileTap={{ scale: 0.8 }}
-                  type="button"
-                  className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
-                >
-                  Finalizar compra
-                </motion.button>*/}
-                <PaypalPayment/>
+                <Link to="/confirm">
+                  <motion.button
+                    whileTap={{ scale: 0.8 }}
+                    type="button"
+                    onClick={FazerPedido}
+                    className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
+                  >
+                    Finalizar compra
+                  </motion.button>
+                </Link>
+                {/*<PaypalPayment/>*/}
               </>
             ) : (
               <></>

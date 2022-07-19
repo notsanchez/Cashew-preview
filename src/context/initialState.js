@@ -8,5 +8,5 @@ export const initialState = {
   foodItems: null,
   cartShow: false,
   cartItems: cartInfo,
-  adminemail: "dznextreme@gmail.com",
+  adminemail: "admin",
 };

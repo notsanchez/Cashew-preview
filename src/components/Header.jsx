@@ -3,9 +3,6 @@ import { MdShoppingBasket, MdAdd, MdLogout, MdPerson } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import {Link} from 'react-router-dom'
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { app } from "../firebase.config" 
-
 import Logo from '../img/logo.png'
 import Avatar from '../img/avatar.png'
 import { useStateValue } from '../context/StateProvider';
@@ -13,37 +10,15 @@ import { actionType } from '../context/reducer';
 
 const Header = () => {
 
-    const firebaseAuth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-
     const [{user, cartShow, cartItems, adminemail}, dispatch] = useStateValue()
 
     const [isMenu, setIsMenu] = useState(false)
 
-    const login = async () => {
-        if(!user){
-            const {
-                user : {refreshToken, providerData
-            }} = await signInWithPopup(firebaseAuth, provider)
-            dispatch({
-                type: actionType.SET_USER,
-                user : providerData[0],
-            });
-            localStorage.setItem('user', JSON.stringify(providerData[0]))
-        } else {
+    const openMenu = () => {
+        if(user){
             setIsMenu(!isMenu)
         }
     };
-
-    const logout = () => {
-        setIsMenu(false)
-        localStorage.clear()
-
-        dispatch({
-            type : actionType.SET_USER,
-            user : null
-        })
-    }
 
     const showCart = () => {
         dispatch({
@@ -74,10 +49,10 @@ const Header = () => {
             <div className='relative'>
                     <motion.img 
                         whileTap={{ scale: 0.8 }} 
-                        src={user ? user.photoURL : Avatar} 
+                        src={Avatar} 
                         className="w-10 h-10 drop-shadow-xl cursor-pointer rounded-full" 
                         alt=""
-                        onClick={login}
+                        onClick={openMenu}
                     />
                     {isMenu && (
                         <motion.div 
@@ -86,12 +61,17 @@ const Header = () => {
                         exit={{opacity: 0, scale : 0.8}}
                         className='w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0'>
                         {
-                            user && user.email === adminemail && (
-                                <Link to={"/createItem"}>
-                                    <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' onClick={() => setIsMenu(false)}>Novo produto<MdAdd /></p>
-                                </Link>
-                            )}
-
+                            user && user === adminemail && (
+                                <>
+                                    <Link to={"/createItem"}>
+                                        <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' onClick={() => setIsMenu(false)}>Novo produto<MdAdd /></p>
+                                    </Link>
+                                    <Link to={"/pedidos"}>
+                                        <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base' onClick={() => setIsMenu(false)}>Procurar pedidos</p>
+                                    </Link>
+                                </>
+                            )
+                        }
                         <ul
                         className='flex flex-col'>
                             <Link to="/">

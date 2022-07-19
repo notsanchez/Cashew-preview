@@ -8,9 +8,11 @@ let items = [];
 const CartItem = ({ item, setFlag, flag }) => {
     const [{ cartItems }, dispatch] = useStateValue();
     const [qty, setQty] = useState(item.qty);
+    const [itemsOnCart, setItemsOnCart] = useState('');
   
     const cartDispatch = () => {
       localStorage.setItem("cartItems", JSON.stringify(items));
+      setItemsOnCart(items)
       dispatch({
         type: actionType.SET_CARTITEMS,
         cartItems: items,
